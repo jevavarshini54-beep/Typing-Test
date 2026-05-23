@@ -1,0 +1,98 @@
+*{
+	margin: 0;
+	padding: 0;
+	font-family: "Poppins",sans-serif;
+}
+
+body{
+	color: white;
+	background:#121212;
+}
+
+header{
+	display: flex;
+	justify-content: center;
+	margin-bottom: 2rem;
+	margin-top: 1.2rem;
+	margin-bottom: 1rem;
+}
+
+.logo{
+	display: flex;
+	align-items: baseline;
+}
+
+.logo h1{
+	font-size: 3.5rem;
+	background:linear-gradient(90deg,#9c4bed,#c77dff,#e39ffe);
+	filter: drop-shadow(0 0 12px rgba(199, 125, 255, 0.5));
+	color: #121212;
+	border-radius: 9999px;
+	padding-left: 1rem;
+	padding-right: 1rem;
+	padding-top: 0.4rem;
+	padding-bottom: 0.5rem;
+	line-height: 1;
+}
+
+.text_1, .text_2{
+	font-size: 2.8rem;
+	margin-bottom: 0rem;
+	color: #908697;
+	text-align: center;
+}
+
+.text_2{
+	font-size: 1.1rem;
+}
+
+.test_type{
+	font-size: 2.6rem;
+	color: #93899a;
+	margin-left: 1.4rem;
+	margin-top: 1.5rem;
+	margin-bottom: 1.5rem;
+	text-align: center;
+}
+
+.buttons_test{
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	gap: 2rem;
+	margin-left: 2rem;
+	margin-right: 2rem;
+}
+
+button{
+	border-radius: 1.5rem;
+	padding: 0.6rem;
+	font-size: 2rem;
+	background-color: #1f1f1f;
+	color: #d8b4fe;
+	border: 2px solid #3a3a3a;
+}
+
+.start_test{
+	margin-top: 2rem;
+	font-size: 3rem;
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+
+	background-color: #aa5aff;
+	color: #1f1f1f;
+	padding-left: 0.6rem;
+	padding-right: 0.6rem;
+}
+
+button:hover{
+	transform: scale(1.1);
+	cursor: pointer;
+	transition: 0.4s;
+}
+
+.test_buttons:hover, .active{
+	background-color: #aa5aff;
+	color: #121212;
+}
