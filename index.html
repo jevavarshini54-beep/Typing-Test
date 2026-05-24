@@ -6,40 +6,48 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 	<link rel="stylesheet" href="style.css">
+	<link rel="stylesheet"
+		href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap">
 
 	<title>TypeAura</title>
 </head>
 
 <body>
 	<header>
-		<div>
-			<h1>TypeAura</h1>
+		<div class="logo">
+			<h1>Type<i>Aura</i></h1>
 		</div>
 	</header>
 
 	<section>
-		<h2>Type fast. Type smart. Type better.</h2>
-		<p>Practice today, become a pro tomorrow.</p>
+		<h2 class="text_1">Type fast. Type smart. Type better.</h2>
+		<p class="text_2">Practice today, become a pro tomorrow.</p>
 	</section>
 
 	<section>
-		<h3>Select Difficulty</h3>
+		<h3 class="test_type">Select Difficulty</h3>
 
-		<button type="button">Easy</button>
-		<button type="button">Medium</button>
-		<button type="button">Difficult</button>
+		<div class="buttons_test">
+			<button type="button" class="lvl_buttons" data-level="easy">Easy</button>
+			<button type="button" class="lvl_buttons" data-level="medium">Medium</button>
+			<button type="button" class="lvl_buttons" data-level="difficult">Difficult</button>
+		</div>
 	</section>
 
 	<section>
-		<h3>Select Time</h3>
+		<h3 class="test_type">Select Time</h3>
 
-		<button type="button">30 sec</button>
-		<button type="button">60 sec</button>
-		<button type="button">90 sec</button>
-		<button type="button">120 sec</button>
+		<div class="buttons_test">
+			<button type="button" class="time_buttons" data-time="30">30 sec</button>
+			<button type="button" class="time_buttons" data-time="60">60 sec</button>
+			<button type="button" class="time_buttons" data-time="90">90 sec</button>
+			<button type="button" class="time_buttons" data-time="120">120 sec</button>
+		</div>
 	</section>
 
-	<button type="button">Start Test →</button>
+	<button class="start_test" type="button" id="start_test">Start Test →</button>
+
+	<script src="page.js"></script>
 </body>
 
 </html>
