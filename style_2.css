@@ -22,7 +22,6 @@ body{
 	display: flex;
 	font-size: 3.5rem;
 	background:linear-gradient(90deg,#9c4bed,#c77dff,#e39ffe);
-	filter: drop-shadow(0 0 12px rgba(199, 125, 255, 0.5));
 	color: #121212;
 	border-radius: 9999px;
 	padding-left: 1rem;
@@ -37,14 +36,56 @@ body{
 	justify-content: center;
 	align-items: center;
 	margin-top: 1.5rem;
-	gap: 5rem;
+	gap: 60rem;
+}
+
+.clock-wrapper{
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	align-items: center;
+	gap: 3rem;
+}
+
+.timing{
+	font-size: 3rem;
+	color: #f595fe;
 }
 
 .clock-wrapper svg{
 filter:drop-shadow(0 0 4px #f595fe);
 }
 
-#toggle-button{
+#toggle-button, #toggle-button img{
 	width: 4.5rem;
 	height: 4.5rem;
+	background-color: #e39ffe;
+	border: none;
+	border-radius: 1rem;
+
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.typing-area{
+	display:flex;
+	justify-content:center;
+	width:80%;
+	margin:6rem auto 0;
+	text-align:center;
+
+	height: 15rem;
+	overflow: hidden;
+	}
+
+.typing-area p{
+	font-size:3.8rem;
+	line-height:1.3;
+	color:#6f6f78;
+	max-width:1000px;
+}
+
+#input-box{
+	opacity: 0;
 }
