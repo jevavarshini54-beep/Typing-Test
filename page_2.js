@@ -31,3 +31,13 @@ document.getElementById('input-box').addEventListener("input", () =>{
 		startTimer();
 	}
 });
+
+function endTest(){
+	clearInterval(interval);
+	isRunning = false;
+	interval = null;
+
+	document.querySelector('.timing').innerHTML = 0;
+	console.log("Test ended");
+	document.getElementById('input-box').disabled = true;
+}
