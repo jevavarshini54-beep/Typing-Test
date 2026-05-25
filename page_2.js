@@ -29,6 +29,7 @@ document.addEventListener("DOMContentLoaded", () => {
 		interval = setInterval( () => {
 			--time;
 			timeDisplay.innerHTML = time;
+			updateCircle();
 		
 			if (time ==0){
 				endTest();
@@ -75,4 +76,14 @@ document.addEventListener("DOMContentLoaded", () => {
 			startTimer();
 		}
 	});
+
+	let progressCircle = document.querySelector('.progress');
+
+	function updateCircle(){
+		let totTime = parseInt(localStorage.getItem('time'));
+		let fraction = time/totTime;
+
+		let degree = 360*fraction;
+		progressCircle.style.background = `conic-gradient(white 0deg ${degree}deg,#121212 ${degree}deg 360deg`;
+}
 });
