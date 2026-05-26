@@ -17,11 +17,12 @@
 	</header>
 	<div class="top-2">
 		<div class="clock-wrapper">
-			<svg height="170" width="170">
+			<svg height="170" width="170" class="ring">
 				<circle r="75" cx="85" cy="85" fill="black" stroke="#c39ffe" stroke-width="15"></circle>
 			</svg>
-			<div class="timing">30</div>
+			<div class="progress"></div>
 		</div>
+		<div class="timing">30</div>
 		<div>
 			<button id="toggle-button">
 				<img src="/assets/pause_button.png" alt="pause" id="togg">
@@ -31,12 +32,7 @@
 	</div>
 
 	<div class="typing-area" id="typing-area">
-		<p>The small dog loves to run in the large open park. He chases a bright red ball across the green grass. When he
-			gets tired, he rests under the cool shade of a big tree. A kind boy brings him a bowl of cold water. It is a very
-			simple and happy life for a dog.Learning to type fast takes a little bit of practice each day. You should try to
-			keep your hands steady and look at the screen instead of your fingers. It is much better to focus on accuracy
-			first before you worry about speed. If you stay calm and relax, your fingers will quickly find the right keys on
-			their own.</p>
+		<p id="text_area">The quick brown fox jumps over the lazy dog</p>
 	</div>
 
 	<input id="input-box" autocomplete="off" autofocus>
