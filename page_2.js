@@ -29,7 +29,7 @@ document.addEventListener("DOMContentLoaded", () => {
 		isPaused = false;
 
 		inputBox.focus();
-		toggImg.src = '/Typing-Test/assets/pause_button.png';
+		toggImg.src = '/assets/pause_button.png';
 		interval = setInterval( () => {
 			--time;
 			timeDisplay.innerHTML = time;
@@ -45,7 +45,7 @@ document.addEventListener("DOMContentLoaded", () => {
 		clearInterval(interval);
 		isRunning = false;
 		isPaused = true;
-		toggImg.src = '/Typing-Test/assets/play_button.png';
+		toggImg.src = '/assets/play_button.png';
 	}
 
 	console.log(document.getElementById('input-box'));
@@ -176,19 +176,19 @@ document.addEventListener("DOMContentLoaded", () => {
 
 		if (wpm<20){
 			animal.innerHTML = "tortoise";
-			animal_img.src = "/Typing-Test/assets/Tortoise.png";
+			animal_img.src = "/assets/Tortoise.png";
 			message.innerHTML = "Slow and steady wins the race. Practice daily to build speed!";
 		}
 
 		else if(wpm>=20 && wpm<40){
 			animal.innerHTML = "horse";
-			animal_img.src = "/Typing-Test/assets/Horse.png";
+			animal_img.src = "/assets/Horse.png";
 			message.innerHTML = "You're galloping ahead! A little more practice and you'll be lightning fast.";
 		}
 
 		else{
 			animal.innerHTML = "cheetah";
-			animal_img.src = "/Typing-Test/assets/Cheetah.png";
+			animal_img.src = "/assets/Cheetah.png";
 			message.innerHTML = "Blazing fast! You're a typing cheetah. Outstanding performance!";
 		}
 	}
