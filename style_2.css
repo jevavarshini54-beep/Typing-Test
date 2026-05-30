@@ -191,3 +191,59 @@ filter:drop-shadow(0 0 4px #f595fe);
 	text-align: center;
 	white-space: nowrap;
 }
+
+@media (max-width: 768px){
+	.logo h1{
+		font-size: 2.2rem;
+	}
+
+	.clock-wrapper{
+		width: 120px;
+		height: 120px;
+	}
+
+	.progress{
+		width: 90px;
+		height: 90px;
+	}
+
+	.timing{
+		margin-right: 2rem;
+		font-size: 2rem;
+		margin-left: 1rem;
+	}
+
+	#toggle-button, #toggle-button img {
+    width: 3.5rem;
+    height: 3.5rem;
+  }
+
+	.typing-area {
+    margin-top: 2rem;
+    height: 200px;
+  }
+
+  .typing-area p {
+    font-size: 1.8rem;
+    line-height: 50px;
+  }
+
+	.popup-box {
+    width: 90%;
+    max-width: 24rem;
+  }
+
+  .popup-box h2 {
+    font-size: 1.5rem;
+  }
+
+  #animal-img {
+    width: 8rem;
+    height: 8rem;
+  }
+
+  #restart-btn {
+    font-size: 1.5rem;
+    padding: 0.8rem;
+  }
+}

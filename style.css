@@ -97,3 +97,38 @@ button:hover{
 	background-color: #aa5aff;
 	color: #121212;
 }
+
+@media (max-width: 768px){
+	.logo h1{
+		font-size: 2.2rem;
+	}
+
+	.text_1{
+		font-size: 1.7rem;
+	}
+
+	.text_2{
+		font-size: 0.9rem;
+	}
+
+	.test_type{
+		font-size: 1.8rem;
+		margin-left: 0.5rem;
+	}
+
+	.buttons_test {
+        flex-wrap: wrap;
+        gap: 1rem;
+        margin-left: 1rem;
+        margin-right: 1rem;
+    }
+
+    button {
+        font-size: 1.4rem;
+        padding: 0.5rem 0.8rem;
+    }
+
+    .start_test {
+        font-size: 1.5rem;
+    }
+}
