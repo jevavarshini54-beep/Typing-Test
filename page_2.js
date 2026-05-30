@@ -176,19 +176,19 @@ document.addEventListener("DOMContentLoaded", () => {
 
 		if (wpm<20){
 			animal.innerHTML = "tortoise";
-			animal_img.src = "/assets/Tortoise.png";
+			animal_img.src = "./assets/Tortoise.png";
 			message.innerHTML = "Slow and steady wins the race. Practice daily to build speed!";
 		}
 
 		else if(wpm>=20 && wpm<40){
 			animal.innerHTML = "horse";
-			animal_img.src = "/assets/Horse.png";
+			animal_img.src = "./assets/Horse.png";
 			message.innerHTML = "You're galloping ahead! A little more practice and you'll be lightning fast.";
 		}
 
 		else{
 			animal.innerHTML = "cheetah";
-			animal_img.src = "/assets/Cheetah.png";
+			animal_img.src = "./assets/Cheetah.png";
 			message.innerHTML = "Blazing fast! You're a typing cheetah. Outstanding performance!";
 		}
 	}

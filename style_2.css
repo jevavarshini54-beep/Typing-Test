@@ -123,7 +123,7 @@ filter:drop-shadow(0 0 4px #f595fe);
 	top: 0;
 	left: 0;
 	width: 100vw;
-	height: 90vh;
+	height: 100vh;
 	background-color: rgba(0,0,0,0.85);
 	display: none;
 	justify-content: center;
@@ -180,12 +180,14 @@ filter:drop-shadow(0 0 4px #f595fe);
 	margin-top: 1.4rem;
 }
 
-.details p{
-	display: inline-flex;
-}
-
 #animal-img{
 	width: 11.25rem;
 	height: 11.25rem;
 	object-fit: contain;
+}
+
+.details p{
+	display: block;
+	text-align: center;
+	white-space: nowrap;
 }
