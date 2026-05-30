@@ -124,7 +124,7 @@ filter:drop-shadow(0 0 4px #f595fe);
 	left: 0;
 	width: 100vw;
 	height: 90vh;
-	background-color: rgba(0,0,0,0.7);
+	background-color: rgba(0,0,0,0.85);
 	display: none;
 	justify-content: center;
 	align-items: center;
@@ -133,11 +133,11 @@ filter:drop-shadow(0 0 4px #f595fe);
 
 .popup-box{
 	background-color: #a2a2a200;
-	padding: 2rem;
+	padding: 1.3rem;
 	border-radius: 2rem;
 	color: white;
 	text-align: center;
-	width: 21rem;
+	width: 24rem;
 	border: 2px solid #c77dff;
 	min-height: 18.75rem;
 	box-shadow: 0 0 20px #c77dff;
@@ -166,4 +166,26 @@ filter:drop-shadow(0 0 4px #f595fe);
 #restart-btn:hover{
 	transform: scale(1.08);
 	transition: 1s;
+}
+
+#user_typing_details{
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	gap: 2rem;
+}
+
+#message{
+	color: #f595fe;
+	margin-top: 1.4rem;
+}
+
+.details p{
+	display: inline-flex;
+}
+
+#animal-img{
+	width: 11.25rem;
+	height: 11.25rem;
+	object-fit: contain;
 }

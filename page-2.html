@@ -34,10 +34,18 @@
 	<div id="pop-up">
 		<div class="popup-box">
 			<h2>Your typing speed</h2>
-			<p>WPM : <span id="wpm">0</span></p>
-			<p>Accuracy : <span id="accuracy">0</span>%</p>
-			<p>CPM : <span id="cpm">0</span></p>
-			<p>Your typing speed was like <span id="animal"></span></p>
+			<div id="user_typing_details">
+				<div class="details">
+					<p>WPM : <span id="wpm">0</span></p>
+					<p>Accuracy : <span id="accuracy">0</span>%</p>
+					<p>CPM : <span id="cpm">0</span></p>
+				</div>
+				<div>
+					<img id="animal-img" src="" alt="img">
+				</div>
+			</div>
+			<p>Your typing speed was like a <span id="animal"></span></p>
+			<p id="message"></p>
 
 			<button id="restart-btn">
 				Restart

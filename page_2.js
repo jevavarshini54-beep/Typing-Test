@@ -155,7 +155,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 		let wpm = Math.round(correctChar/(5*time_mins));
 		let cpm = correctChar;
-		let accurate = typed.length > 0 ? (correctChar*100)/typed.length.toFixed(2) : 0;
+		let accurate = typed.length > 0 ? ((correctChar*100)/typed.length).toFixed(2) : 0;
 
 		document.querySelector('.timing').innerHTML = 0;
 		console.log("Test ended");
@@ -166,8 +166,27 @@ document.addEventListener("DOMContentLoaded", () => {
 		document.getElementById("cpm").innerHTML = cpm;
 		document.getElementById("accuracy").innerHTML = accurate;
 
-		console.log("typed",typed);
-		console.log("correct",correctChar);
+		let animal = document.getElementById("animal");
+		let animal_img = document.getElementById("animal-img");
+		let message = document.getElementById("message");
+
+		if (wpm<20){
+			animal.innerHTML = "tortoise";
+			animal_img.src = "/assets/Tortoise.png";
+			message.innerHTML = "Slow and steady wins the race. Practice daily to build speed!";
+		}
+
+		else if(wpm>=20 && wpm<40){
+			animal.innerHTML = "horse";
+			animal_img.src = "/assets/Horse.png";
+			message.innerHTML = "You're galloping ahead! A little more practice and you'll be lightning fast.";
+		}
+
+		else{
+			animal.innerHTML = "cheetah";
+			animal_img.src = "/assets/Cheetah.png";
+			message.innerHTML = "Blazing fast! You're a typing cheetah. Outstanding performance!";
+		}
 	}
 
 	const toggBtn = document.getElementById('toggle-button');
