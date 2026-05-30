@@ -28,6 +28,7 @@ document.addEventListener("DOMContentLoaded", () => {
 		isRunning = true;
 		isPaused = false;
 
+		inputBox.focus();
 		toggImg.src = '/assets/pause_button.png';
 		interval = setInterval( () => {
 			--time;
@@ -138,14 +139,17 @@ document.addEventListener("DOMContentLoaded", () => {
 	document.getElementById('text_area').innerHTML = textDisp;
 
 	document.getElementById('input-box').addEventListener("input", () => {
-    if (!isRunning && time > 0) {
-        startTimer();
+		inputBox.focus();
+    if (!isRunning && time > 0 && !isPaused) {
+      startTimer();
     }
 	});
 
 	document.querySelector(".typing-area").addEventListener("click", () => {
-    inputBox.focus();
-		startTimer();
+		inputBox.focus();
+		if (!isRunning && time > 0 && !isPaused) {
+      startTimer();
+    }
 	});
 
 	function endTest(){
@@ -202,7 +206,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
 		else{
 			startTimer();
-			
 	}
 	});
 
