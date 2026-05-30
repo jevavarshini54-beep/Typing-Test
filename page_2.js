@@ -3,6 +3,9 @@ document.addEventListener("DOMContentLoaded", () => {
 	console.log(time);
 	document.querySelector('.timing').innerHTML = time;
 
+	let time_mins = time/60;
+	let typed = "";
+	let correctChar = 0;
 	let difficulty = localStorage.getItem('level');
 	console.log(difficulty);
 
@@ -45,73 +48,6 @@ document.addEventListener("DOMContentLoaded", () => {
 	}
 
 	console.log(document.getElementById('input-box'));
-	let textGenerated = false;
-	document.getElementById('input-box').addEventListener("input", () =>{
-
-		if (!isRunning && time>0){
-			if(!textGenerated){
-				textDisp = generateText();
-				document.getElementById('text_area').innerHTML = textDisp;
-				textGenerated = true;
-			}
-		}
-
-		if (!isRunning){
-			startTimer();
-		}
-	});
-
-	document.querySelector(".typing-area").addEventListener("click",()=>{
-		inputBox.focus();
-		if (!isRunning && time>0){
-			if(!textGenerated){
-				textDisp = generateText();
-				document.getElementById('text_area').innerHTML = textDisp;
-				textGenerated = true;
-			}
-		}
-
-		if (!isRunning){
-			startTimer();
-		}
-	});
-
-	function endTest(){
-		clearInterval(interval);
-		isRunning = false;
-		interval = null;
-
-		document.querySelector('.timing').innerHTML = 0;
-		console.log("Test ended");
-		document.getElementById('input-box').disabled = true;
-	}
-
-	const toggBtn = document.getElementById('toggle-button');
-
-	toggBtn.addEventListener("click",() => {
-		if (time<=0){
-			return;
-		}
-
-		if(isRunning){
-			pauseTimer();
-		}
-
-		else{
-			startTimer();
-			
-	}
-	});
-
-	let progressCircle = document.querySelector('.progress');
-
-	function updateCircle(){
-		let totTime = parseInt(localStorage.getItem('time'));
-		let fraction = time/totTime;
-
-		let degree = 360*fraction;
-		progressCircle.style.background = `conic-gradient(white 0deg ${degree}deg,#121212 ${degree}deg 360deg)`;
-	}
 
 	const words = {
 		easy : ["cat","dog","sun","moon","star","tree","leaf","grass","bird","fish",
@@ -191,21 +127,86 @@ document.addEventListener("DOMContentLoaded", () => {
 	function generateText(){
 		let text=[];
 
-		for (let i=0; i<words[difficulty].length; i++){
+		for (let i=0; i<350; i++){
 			let randomWords = currentWords[Math.floor(Math.random()*currentWords.length)];
 			text.push(randomWords);
 		}
-		return text.join(" ")
+		return text.join(" ");
+	}
+
+	let textDisp = generateText();
+	document.getElementById('text_area').innerHTML = textDisp;
+
+	document.getElementById('input-box').addEventListener("input", () => {
+    if (!isRunning && time > 0) {
+        startTimer();
+    }
+	});
+
+	document.querySelector(".typing-area").addEventListener("click", () => {
+    inputBox.focus();
+		startTimer();
+	});
+
+	function endTest(){
+		clearInterval(interval);
+		isRunning = false;
+		interval = null;
+
+		let wpm = Math.round(correctChar/(5*time_mins));
+		let cpm = correctChar;
+		let accurate = typed.length > 0 ? (correctChar*100)/typed.length.toFixed(2) : 0;
+
+		document.querySelector('.timing').innerHTML = 0;
+		console.log("Test ended");
+		document.getElementById('input-box').disabled = true;
+
+		popUp.style.display = "flex";
+		document.getElementById("wpm").innerHTML = wpm;
+		document.getElementById("cpm").innerHTML = cpm;
+		document.getElementById("accuracy").innerHTML = accurate;
+
+		console.log("typed",typed);
+		console.log("correct",correctChar);
+	}
+
+	const toggBtn = document.getElementById('toggle-button');
+
+	toggBtn.addEventListener("click",() => {
+		if (time<=0){
+			return;
+		}
+
+		if(isRunning){
+			pauseTimer();
+		}
+
+		else{
+			startTimer();
+			
+	}
+	});
+
+	let progressCircle = document.querySelector('.progress');
+
+	function updateCircle(){
+		let totTime = parseInt(localStorage.getItem('time'));
+		let fraction = time/totTime;
+
+		let degree = 360*fraction;
+		progressCircle.style.background = `conic-gradient(white 0deg ${degree}deg,#121212 ${degree}deg 360deg)`;
 	}
 
 	document.getElementById('input-box').addEventListener("input", (e) => {
-		let typed = e.target.value;
 		let display = "";
+		typed = e.target.value;
+		correctChar = 0;
 
 		for (let i=0; i<textDisp.length; i++){
 			if (i<typed.length){
 				if (typed[i] === textDisp[i]){
 					display += `<span class="correct">${textDisp[i]}</span>`;
+					correctChar++;
 				}
 				else{
 					if (textDisp[i] === " "){
@@ -222,5 +223,36 @@ document.addEventListener("DOMContentLoaded", () => {
 			}
 			}
 		document.getElementById('text_area').innerHTML = display;
+
+		let currentChar = typed.length;
+		let span_text = document.querySelectorAll('#text_area span');
+	
+		if (span_text[currentChar]){
+			let firstTop = span_text[0].offsetTop;
+			let currentTop = span_text[currentChar].offsetTop;
+
+			let lineHeight = 0;
+			for (let s of span_text) {
+    		if (s.offsetTop > firstTop) {
+        	lineHeight = s.offsetTop - firstTop;
+        	break;
+    		}
+			}
+
+			if (lineHeight === 0) lineHeight = span_text[0].offsetHeight;
+
+			let currentLine = Math.round((currentTop - firstTop) / lineHeight);
+
+			if (currentLine > 3) {
+    		document.getElementById('text_area').style.transform = `translateY(-${(currentLine - 3) * lineHeight}px)`;
+			}
+			else {
+    		document.getElementById('text_area').style.transform = `translateY(0px)`;
+			}
+		};
 	});
+
+	document.getElementById('restart-btn').addEventListener("click",() => {
+		location.reload();
+	})
 });
