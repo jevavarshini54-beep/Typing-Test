@@ -13,7 +13,7 @@ document.addEventListener("DOMContentLoaded", () => {
 																<th>S.No</th>
 																<th>Date</th>
 																<th>Difficulty</th>
-																<th>Duration</th>
+																<th>Duration (secs)</th>
 																<th>WPM</th>
 																<th>CPM</th>
 																<th>Accuracy</th>
@@ -40,5 +40,6 @@ document.addEventListener("DOMContentLoaded", () => {
 		loadHistory();
 	}
 
+	document.getElementById("clear-btn").addEventListener('click',clearHistory);
 	loadHistory();
 });

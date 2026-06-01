@@ -65,3 +65,32 @@ td{
 th:nth-child(2),td:nth-child(2){
 	min-width: 2.9rem;
 }
+
+.buttons{
+	display: flex;
+	justify-content: center;
+	gap: 3rem;
+	margin-top: 2.9rem;
+}
+
+.buttons button{
+	padding: 0.9rem;
+	font-size: 1.8rem;
+	color: #121212;
+	background-color: #c77dff;
+	border: 2px solid gray;
+	border-radius: 1rem;
+	cursor: pointer;
+}
+
+.buttons button:hover{
+	transform: scale(1.1);
+	transition: 0.8s;
+}
+
+.noHistory{
+	text-align: center;
+	color: #908697;
+	font-size: 1.3rem;
+	margin-bottom: 0.4rem;
+}

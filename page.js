@@ -3,7 +3,8 @@ document.addEventListener("DOMContentLoaded", () => {
 	let options_time = document.querySelectorAll(".time_buttons");
 	let selected_level = "";
 	let selected_time = "";
-	localStorage.clear();
+	localStorage.removeItem('level');
+	localStorage.removeItem('time');
 	
 	options_lvl.forEach(btn_lvl => {
 		btn_lvl.addEventListener("click", () => {

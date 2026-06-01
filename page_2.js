@@ -191,6 +191,12 @@ document.addEventListener("DOMContentLoaded", () => {
 			animal_img.src = "./assets/Cheetah.png";
 			message.innerHTML = "Blazing fast! You're a typing cheetah. Outstanding performance!";
 		}
+
+		let history = JSON.parse(localStorage.getItem('typingHistory')) || [];
+		let result = {"wpm":wpm, "cpm":cpm, "accuracy":accurate, "difficulty":difficulty, "time":parseInt(localStorage.getItem('time')), "date":new Date().toLocaleDateString()};
+
+		history.push(result);
+		localStorage.setItem("typingHistory",JSON.stringify(history));
 	}
 
 	const toggBtn = document.getElementById('toggle-button');
@@ -223,58 +229,97 @@ document.addEventListener("DOMContentLoaded", () => {
 		let display = "";
 		typed = e.target.value;
 		correctChar = 0;
+		let currentWordSpan = "";
 
-		for (let i=0; i<textDisp.length; i++){
-			if (i<typed.length){
-				if (typed[i] === textDisp[i]){
-					display += `<span class="correct">${textDisp[i]}</span>`;
-					correctChar++;
-				}
-				else{
-					if (textDisp[i] === " "){
-						display += `<span class="wrong">_</span>`;
+		for (let i=0; i<=textDisp.length; i++){
+			if (i === textDisp.length || textDisp[i] === " "){
+				display += `<span class="word">${currentWordSpan}</span>`;
+				currentWordSpan = "";
+
+				if (i<textDisp.length){
+
+					if (i<typed.length){
+						if (typed[i] === " "){
+							display += `<span class="correct"> </span>`;
+						}
+
+						else{
+							display += `<span class="wrong">_</span>`;
+						}
 					}
+
+					else if (i === typed.length){
+						display += `<span class="cursor"></span><span class="remaining"> </span>`;
+					}
+
 					else{
-						display += `<span class="wrong">${textDisp[i]}</span>`;
+						display += `<span class="remaining"> </span>`;
 					}
 				}
 			}
 
 			else{
-				display+= `<span class="remaining">${textDisp[i]}</span>`;
+				if (i<typed.length){
+
+					if (typed[i] === textDisp[i]){
+						currentWordSpan += `<span class="correct">${textDisp[i]}</span>`;
+						correctChar++;
+					}
+
+					else{
+						currentWordSpan += `<span class="wrong">${textDisp[i]}</span>`;
+					}
+				}
+
+				else if (i === typed.length){
+					currentWordSpan += `<span class="cursor"></span><span class="remaining">${textDisp[i]}</span>`;
+				}
+
+				else{
+					currentWordSpan += `<span class="remaining">${textDisp[i]}</span>`;
+				}
 			}
-			}
+		}
 		document.getElementById('text_area').innerHTML = display;
 
-		let currentChar = typed.length;
-		let span_text = document.querySelectorAll('#text_area span');
-	
-		if (span_text[currentChar]){
-			let firstTop = span_text[0].offsetTop;
-			let currentTop = span_text[currentChar].offsetTop;
+		let span_text = document.querySelectorAll('#text_area .word');
+		let currentWordIndex = 0;
+    let charCount = 0;
 
-			let lineHeight = 0;
-			for (let s of span_text) {
-    		if (s.offsetTop > firstTop) {
-        	lineHeight = s.offsetTop - firstTop;
-        	break;
-    		}
-			}
+    for (let i = 0; i < span_text.length; i++) {
+      charCount += span_text[i].textContent.length + 1;
+      if (charCount > typed.length) {
+        currentWordIndex = i;
+        break;
+      }
+    }
 
-			if (lineHeight === 0) lineHeight = span_text[0].offsetHeight;
+		if (span_text[currentWordIndex]) {
+      let firstTop = span_text[0].offsetTop;
+      let currentTop = span_text[currentWordIndex].offsetTop;
 
+      let lineHeight = 0;
+      for (let s of span_text) {
+        if (s.offsetTop > firstTop) {
+          lineHeight = s.offsetTop - firstTop;
+          break;
+        }
+      }
+
+      if (lineHeight === 0) lineHeight = span_text[0].offsetHeight;
 			let currentLine = Math.round((currentTop - firstTop) / lineHeight);
 
-			if (currentLine > 3) {
-    		document.getElementById('text_area').style.transform = `translateY(-${(currentLine - 3) * lineHeight}px)`;
+      if (currentLine > 3) {
+        document.getElementById('text_area').style.transform = `translateY(-${(currentLine - 3) * lineHeight}px)`;
 			}
+				
 			else {
-    		document.getElementById('text_area').style.transform = `translateY(0px)`;
-			}
-		};
+        document.getElementById('text_area').style.transform = `translateY(0px)`;
+      }
+    }
 	});
 
 	document.getElementById('restart-btn').addEventListener("click",() => {
 		location.reload();
-	})
+	});
 });
