@@ -26,6 +26,7 @@ document.addEventListener("DOMContentLoaded", () => {
 		}
 
 		isRunning = true;
+		hasStarted = true;
 		isPaused = false;
 
 		inputBox.focus();
@@ -46,6 +47,7 @@ document.addEventListener("DOMContentLoaded", () => {
 		isRunning = false;
 		isPaused = true;
 		toggImg.src = './assets/play_button.png';
+		inputBox.disabled = true;
 	}
 
 	console.log(document.getElementById('input-box'));
@@ -147,8 +149,16 @@ document.addEventListener("DOMContentLoaded", () => {
 
 	document.querySelector(".typing-area").addEventListener("click", () => {
 		inputBox.focus();
-		if (!isRunning && time > 0 && !isPaused) {
+
+		if (isPaused){
+			inputBox.value = typed;
+			return;
+		}
+
+		if (!isRunning && time > 0) {
       startTimer();
+			isPaused = false;
+			inputBox.disabled = false;
     }
 	});
 
@@ -202,7 +212,7 @@ document.addEventListener("DOMContentLoaded", () => {
 	const toggBtn = document.getElementById('toggle-button');
 
 	toggBtn.addEventListener("click",() => {
-		if (time<=0){
+		if (time<=0 || !hasStarted){
 			return;
 		}
 
